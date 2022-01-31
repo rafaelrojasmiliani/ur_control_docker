@@ -1,4 +1,4 @@
-FROM [--platform=linux/arm/v7] ros:noetic-ros-base
+FROM --platform=linux/arm/v7 ros:noetic-ros-base
 SHELL ["/bin/bash", "-c"]
 WORKDIR /
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends -o \
