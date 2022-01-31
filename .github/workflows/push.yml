@@ -21,4 +21,4 @@ jobs:
         with:
           tags: rafa606/urroscontrol
           push: true
-          platforms: linux/amd64,linux/arm/v6,linux/arm/v7
+          platforms: linux/arm/v7
