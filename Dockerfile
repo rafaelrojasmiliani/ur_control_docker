@@ -18,9 +18,10 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends -o \
         Dpkg::Options::="--force-confnew" \
         build-essential \
-        git python-pip python-setuptools && \
-    pip install wheel 
-RUN python setup.py bdist_wheel
+        git python-pip python-setuptools gcc libpq-dev \
+        python-dev  python-pip python3-dev python3-pip python3-venv \
+        python3-wheel
+
 RUN pip pycryptodome rosdep rosinstall rosinstall-generator wstool
 
 RUN rosdep init && rosdep update
