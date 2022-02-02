@@ -9,12 +9,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
                         wget ca-certificates ntpdate curl
 
 
-RUN cd / && \
-        curl -OL https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz && \
-        tar -xzf cmake-3.21.0.tar.gz && \
-        cd cmake-3.21.0 && \
-         ./bootstrap --prefix=/usr -- -D_FILE_OFFSET_BITS=64 && \
-         make && \
+RUN curl -OL https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz
+RUN tar -xzf cmake-3.21.0.tar.gz
+RUN cd cmake-3.21.0 && ./bootstrap --prefix=/usr -- -D_FILE_OFFSET_BITS=64
+RUN cd cmake-3.21.0 && make && \
          ./bin/cpack -G DEB && \
          dpkg -i *.deb
 
