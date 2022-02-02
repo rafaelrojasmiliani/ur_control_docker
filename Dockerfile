@@ -8,13 +8,16 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
                         libyaml-cpp-dev lsb-release isc-dhcp-server \
                         wget ca-certificates ntpdate curl
 
+
 RUN cd / && \
-        curl -OL https://github.com/Kitware/CMake/releases/download/v3.21.0/cmake-3.21.0.tar.gz && \
+        curl -OL https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz && \
         tar -xzf cmake-3.21.0.tar.gz && \
         cd cmake-3.21.0 && \
          ./bootstrap --prefix=/usr -- -D_FILE_OFFSET_BITS=64 && \
          make && \
-         make install
+         ./bin/cpack -G DEB && \
+         dpkg -i *.deb
+
 
 #RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends -o \
 #        Dpkg::Options::="--force-confnew" \
