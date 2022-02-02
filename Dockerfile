@@ -21,7 +21,7 @@ RUN apt-get update && \
         Dpkg::Options::="--force-confnew" \
         python3-rosdep python3-rosinstall-generator python3-wstool python-wstool \
         python3-rosinstall build-essential \
-        python3-catkin-tools git python-pip python3-pip
+        python-catkin-tools git python-pip python3-pip
 RUN pip3 install pycryptodome
 
 RUN rosdep init && rosdep update
