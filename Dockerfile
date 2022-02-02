@@ -6,14 +6,14 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
         Dpkg::Options::="--force-confnew" \
                         gnupg python3 python3-dev python3-pip build-essential \
                         libyaml-cpp-dev lsb-release isc-dhcp-server \
-                        wget ca-certificates ntpdate curl
+                        wget ca-certificates ntpdate curl libssl-dev
 
 
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.21.0/cmake-3.21.0.tar.gz
 RUN ls
 RUN tar -xzf cmake-3.21.0.tar.gz
-RUN cd cmake-3.21.0 && ./bootstrap --prefix=/usr -- -D_FILE_OFFSET_BITS=64
-RUN cd cmake-3.21.0 && make && \
+RUN cd cmake-3.21.0 && ./bootstrap --parallel=6 --prefix=/usr -- -D_FILE_OFFSET_BITS=64
+RUN cd cmake-3.21.0 && make -j 6 && \
          ./bin/cpack -G DEB && \
          dpkg -i *.deb
 
