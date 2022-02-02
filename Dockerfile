@@ -1,7 +1,7 @@
 FROM --platform=linux/arm/v7 rafa606/debian_arm_v7
-SHELL ["/bin/bash", "-c"]
 WORKDIR /catkinws
 RUN mkdir /catkin/src
+SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends -o \
