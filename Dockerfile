@@ -1,8 +1,9 @@
 FROM --platform=linux/arm/v7 rafa606/debian_arm_v7_ros
-WORKDIR /catkinws2
+WORKDIR /catkinws
 ENV SSL_CERT_FILE=/usr/lib/ssl/certs/ca-certificates.crt
 SHELL ["/bin/bash", "-c"]
 
+RUN rm -rf /catkinws/* && mkdir  /catkinws/src
 RUN sh -c """ \
     echo deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main \
         > /etc/apt/sources.list.d/ros-latest.list \
