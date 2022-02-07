@@ -22,6 +22,4 @@ RUN git clone -b v2.0 https://github.com/UniversalRobots/Universal_Robots_ROS_Dr
     git clone -b calibration_devel https://github.com/rafaelrojasmiliani/universal_robot.git /catkinws2/src/rrojas_universal_robot && \
     git clone -b 0.3.2 https://github.com/UniversalRobots/Universal_Robots_Client_Library.git /catkinws2/src/Universal_Robots_Client_Library
 
-RUN rosdep update
-RUN rosdep install -r -q --from-paths src --ignore-src --rosdistro noetic -y
 RUN src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release -DCATKIN_SKIP_TESTING=ON --install-space /opt/ros/noetic -j1 -DPYTHON_EXECUTABLE=/usr/bin/python3
