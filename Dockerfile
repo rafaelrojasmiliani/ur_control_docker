@@ -17,12 +17,12 @@ RUN sh -c """ \
         python-dev  python-pip python3-dev python3-pip python3-venv \
         python3-wheel python-rosdep python-rosinstall-generator \
         python-wstool python-rosinstall avahi-daemon \
-        avahi-autoipd openssh-server isc-dhcp-client iproute2
-
-RUN echo '[server]' >> /etc/avahi/avahi-daemon.conf
-RUN echo 'enable-dbus=no' >> /etc/avahi/avahi-daemon.conf
-
-RUN git clone -b v2.0 https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git /catkinws/src/Universal_Robots_ROS_Driver && \
+        avahi-autoipd openssh-server isc-dhcp-client iproute2 && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip3 install serial && \
+    echo '[server]' >> /etc/avahi/avahi-daemon.conf && \
+    echo 'enable-dbus=no' >> /etc/avahi/avahi-daemon.conf && \
+    git clone -b v2.0 https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git /catkinws/src/Universal_Robots_ROS_Driver && \
     git clone -b calibration_devel https://github.com/rafaelrojasmiliani/universal_robot.git /catkinws/src/rrojas_universal_robot && \
     git clone -b 0.3.2 https://github.com/UniversalRobots/Universal_Robots_Client_Library.git /catkinws/src/Universal_Robots_Client_Library && \
     git clone https://github.com/UniversalRobots/Universal_Robots_ROS_scaled_controllers.git /catkinws/src/Universal_Robots_ROS_scaled_controllers && \
@@ -30,6 +30,5 @@ RUN git clone -b v2.0 https://github.com/UniversalRobots/Universal_Robots_ROS_Dr
     git clone https://github.com/UniversalRobots/Universal_Robots_ROS_passthrough_controllers.git /catkinws/src/Universal_Robots_ROS_passthrough_controllers && \
     git clone https://github.com/UniversalRobots/Universal_Robots_ROS_cartesian_control_msgs.git /catkinws/src/Universal_Robots_ROS_cartesian_control_msgs && \
     git clone https://github.com/UniversalRobots/Universal_Robots_ROS_controllers_cartesian.git /catkinws/src/Universal_Robots_ROS_controllers_cartesian && \
-	git clone -b raspberry https://github.com/rafaelrojasmiliani/robotiq_85_gripper.git /catkinws/src/robotiq_85_gripper
-
-RUN source /opt/ros/noetic/setup.bash && catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release -DCATKIN_SKIP_TESTING=ON --install-space /opt/ros/noetic -j4 -DPYTHON_EXECUTABLE=/usr/bin/python3 && rm -rf /catkinws/*
+	git clone -b raspberry https://github.com/rafaelrojasmiliani/robotiq_85_gripper.git /catkinws/src/robotiq_85_gripper && \
+    source /opt/ros/noetic/setup.bash && catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release -DCATKIN_SKIP_TESTING=ON --install-space /opt/ros/noetic -j4 -DPYTHON_EXECUTABLE=/usr/bin/python3 && rm -rf /catkinws/*
