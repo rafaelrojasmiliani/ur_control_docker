@@ -19,7 +19,7 @@ RUN sh -c """ \
         python-wstool python-rosinstall avahi-daemon \
         avahi-autoipd openssh-server isc-dhcp-client iproute2 && \
     rm -rf /var/lib/apt/lists/* && \
-    pip3 install serial && \
+    pip3 install pyserial && \
     echo '[server]' >> /etc/avahi/avahi-daemon.conf && \
     echo 'enable-dbus=no' >> /etc/avahi/avahi-daemon.conf && \
     git clone -b v2.0 https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git /catkinws/src/Universal_Robots_ROS_Driver && \
