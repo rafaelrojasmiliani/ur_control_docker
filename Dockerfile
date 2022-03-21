@@ -32,3 +32,4 @@ RUN sh -c """ \
     git clone https://github.com/UniversalRobots/Universal_Robots_ROS_controllers_cartesian.git /catkinws/src/Universal_Robots_ROS_controllers_cartesian && \
 	git clone -b raspberry https://github.com/rafaelrojasmiliani/robotiq_85_gripper.git /catkinws/src/robotiq_85_gripper && \
     source /opt/ros/noetic/setup.bash && catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release -DCATKIN_SKIP_TESTING=ON --install-space /opt/ros/noetic -j4 -DPYTHON_EXECUTABLE=/usr/bin/python3 && rm -rf /catkinws/*
+
