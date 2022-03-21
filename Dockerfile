@@ -35,4 +35,4 @@ RUN sh -c """ \
     rosdep install -r -q  --from-paths src --ignore-src --rosdistro noetic -y && \
     catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release -DCATKIN_SKIP_TESTING=ON --install-space /opt/ros/noetic -j4 -DPYTHON_EXECUTABLE=/usr/bin/python3 && \
     rm -rf /catkinws/* && \
-    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/lib/apt/lists/*
