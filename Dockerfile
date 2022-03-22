@@ -34,3 +34,4 @@ RUN sh -c """ \
     catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release -DCATKIN_SKIP_TESTING=ON --install-space /opt/ros/noetic -j4 -DPYTHON_EXECUTABLE=/usr/bin/python3 && \
     rm -rf /catkinws/* && \
     rm -rf /var/lib/apt/lists/*
+
